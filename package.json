@@ -1,6 +1,6 @@
 {
   "name": "@killiandvcz/kitutils",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "A collection of utilities special SvelteKit",
   "main": "index.js",
   "type": "module",
@@ -14,5 +14,9 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/killiandvcz/kitutils"
   }
 }

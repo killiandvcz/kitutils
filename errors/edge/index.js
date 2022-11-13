@@ -1,7 +1,7 @@
 import {handleErrors, handleAlreadyExistsError, handleNotFoundError} from '../index.js';
 
 export const handleQueryErrors = (query, {alreadyExists = "", notFound = ""}) => {
-    if (!query.data){
+    if (notFound && query.data === null){
         return handleNotFoundError(notFound);
     }
 

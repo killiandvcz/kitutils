@@ -17,23 +17,23 @@ export const string = ({
                            max,
                            regex
                        }) => {
-    const basic = z
+    let basic = z
         .string({required_error: requiredMessage, invalid_type_error: message.invalid})
 
     if (min) {
         if (min === 1) {
-            basic.min(1, {message: requiredMessage})
+            basic = basic.min(1, {message: requiredMessage})
         } else {
-            basic.min(min, {message: message.min})
+            basic = basic.min(min, {message: message.min})
         }
     }
 
     if (max) {
-        basic.max(max, {message: message.max})
+        basic = basic.max(max, {message: message.max})
     }
 
     if (regex) {
-        basic.regex(regex, {message: message.invalid})
+        basic = basic.regex(regex, {message: message.invalid})
     }
 
     return basic;

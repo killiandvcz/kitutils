@@ -1,0 +1,1 @@
+export const check = (regex, string) => regex.test(string);

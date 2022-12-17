@@ -1,9 +1,11 @@
+import {json} from '@sveltejs/kit';
+
 export const handleErrors = ({status, code, errors, headers, thr = true}) => {
-    return new Response(JSON.stringify({
+    return json({
         pass: false,
         code,
         errors
-    }), {status, headers})
+    }, {status, headers})
 }
 
 export const handleForbiddenError = (message = 'Vous n\'êtes pas autorisé à effectuer cette action') => {

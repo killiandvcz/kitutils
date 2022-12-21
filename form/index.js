@@ -1,16 +1,19 @@
 import {writable, get} from 'svelte/store';
 import {getFormErrors} from "./zod/index.js";
+import {hashmap} from "../stores/index.js";
 
 export class Form {
-    constructor({name, form, schema}) {
+    constructor({name, form, schema, data}) {
         this.name = name;
         this.form = form || {};
         this.schema = schema || null;
+        this.data = data || {};
     };
 
     values = writable({});
     errors = writable({});
     okays = writable({});
+    data = hashmap(this.data);
 
     init = () => {
         Object.entries(this.form).forEach(([key, value]) => {

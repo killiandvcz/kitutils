@@ -7,13 +7,13 @@ export class Form {
         this.name = name;
         this.form = form || {};
         this.schema = schema || null;
-        this.data = data || {};
+        this.dataValue = data || {};
     };
 
     values = writable({});
     errors = writable({});
     okays = writable({});
-    data = hashmap(this.data);
+    data = hashmap(this.dataValue);
 
     init = () => {
         Object.entries(this.form).forEach(([key, value]) => {

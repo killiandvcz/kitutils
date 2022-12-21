@@ -49,6 +49,10 @@ export const hashmap = (init = {}) => {
         store.set(GET(store));
     }
 
+    const hardSet = (value) => {
+        store.set(value);
+    }
+
     const reset = () => {
         store.set(init);
     }
@@ -61,7 +65,9 @@ export const hashmap = (init = {}) => {
         subscribe,
         get,
         set,
+        hardSet,
         reset,
+        hardReset,
         update
     }
 }

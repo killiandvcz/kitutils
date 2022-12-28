@@ -15,7 +15,8 @@ export const string = ({
                            },
                            min = 1,
                            max,
-                           regex
+                           regex,
+                           optional = false
                        }) => {
     let basic = z
         .string({required_error: requiredMessage, invalid_type_error: message.invalid})
@@ -34,6 +35,10 @@ export const string = ({
 
     if (regex) {
         basic = basic.regex(regex, {message: message.invalid})
+    }
+
+    if (optional){
+        basic = basic.optional().or(z.undefined()).or(z.literal(""))
     }
 
     return basic;

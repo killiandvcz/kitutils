@@ -97,3 +97,26 @@ export const checkToken = (request, cookie, key, messages = {
     return token;
 }
 
+
+export const getBearerToken = (request, message = "Aucun token d'authentification n'a été trouvé") => {
+    const rawToken = request.headers.get("authorization")
+
+    if (!rawToken) {
+        return {
+            err: handleErrors({
+                status: 401,
+                code: "NO_TOKEN",
+                errors: [
+                    {
+                        message: message || "Token d'authentification inexistant"
+                    }
+                ]
+            }),
+            pass: false
+        }
+    }
+
+    const token = rawToken.split(" ")[1];
+
+    return token;
+}

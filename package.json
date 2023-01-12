@@ -1,6 +1,6 @@
 {
   "name": "@killiandvcz/kitutils",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "A collection of utilities special SvelteKit",
   "main": "index.js",
   "type": "module",

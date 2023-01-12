@@ -9,7 +9,7 @@ export const query = (client, query, params = {debug: false}) => client.query(qu
     }
 }).catch(e => {
     if (params.debug) {
-        console.log({e});
+        console.log({query, e});
     }
     return {
         pass: false,
@@ -28,7 +28,7 @@ export const querySingle = (client, query, params = {debug: false}) => client.qu
     }
 }).catch(e => {
     if (params.debug) {
-        console.log({e});
+        console.log({query, e});
     }
 
     return {

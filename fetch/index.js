@@ -1,7 +1,10 @@
-export const get = (endpoint, {fn = fetch, bearer = ""}) => {
-    return fn(endpoint, {
+export const get = (endpoint, opts = {fn: fetch, bearer: ""}) => {
+    return opts.fn(endpoint, {
         method: 'GET',
-        credentials: 'include'
+        credentials: 'include',
+        headers: {
+            "Authorization": opts.bearer ? `Bearer ${opts.bearer}` : ""
+        }
     }).then((r) => r.json()).then(r => {
         if (r.pass) {
             return r;
@@ -11,14 +14,14 @@ export const get = (endpoint, {fn = fetch, bearer = ""}) => {
     });
 }
 
-export const post = (endpoint, data = {}, {fn = fetch, bearer = ""}) => {
-    return fn(endpoint, {
+export const post = (endpoint, data = {}, opts = {fn: fetch, bearer: ""}) => {
+    return opts.fn(endpoint, {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(data || {}),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': bearer ? `Bearer ${bearer}` : ""
+            'Authorization': opts.bearer ? `Bearer ${opts.bearer}` : ""
         },
     }).then((r) => r.json()).then(r => {
         if (r.pass) {

@@ -1,10 +1,6 @@
 import {z} from 'zod';
 
 
-export const uuid = ({requiredMessage = "UUID requis", invalidMessage = "UUID invalide"}) => z
-    .string({required_error: requiredMessage})
-    .min(1, {message: requiredMessage})
-    .regex(/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/, {message: invalidMessage})
 
 export const string = ({
                            requiredMessage = "Texte requis",
@@ -44,4 +40,16 @@ export const string = ({
     return basic;
 }
 
+export const uuid = (optional) => string({
+    requiredMessage: "UUID requis",
+    message: {
+        min: "UUID requis",
+        max: "UUID invalide",
+        invalid: "UUID invalide",
+    },
+    min: 1,
+    regex: /[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/,
+    optional: optional
+
+})
 

@@ -40,12 +40,12 @@ export const string = ({
     return basic;
 }
 
-export const uuid = (optional) => string({
-    requiredMessage: "UUID requis",
+export const uuid = ({optional, requiredMessage, invalidMessage, regex}) => string({
+    requiredMessage: "UUID requis" || requiredMessage,
     message: {
-        min: "UUID requis",
-        max: "UUID invalide",
-        invalid: "UUID invalide",
+        min: "UUID requis" || requiredMessage,
+        max: "UUID invalide" || invalidMessage,
+        invalid: "UUID invalide" || invalidMessage,
     },
     min: 1,
     regex: /[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/,

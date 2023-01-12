@@ -41,14 +41,14 @@ export const string = ({
 }
 
 export const uuid = ({optional, requiredMessage, invalidMessage, regex}) => string({
-    requiredMessage: "UUID requis" || requiredMessage,
+    requiredMessage: requiredMessage ||"UUID requis" ,
     message: {
-        min: "UUID requis" || requiredMessage,
-        max: "UUID invalide" || invalidMessage,
-        invalid: "UUID invalide" || invalidMessage,
+        min: requiredMessage || "UUID requis" ,
+        max: invalidMessage || "UUID invalide",
+        invalid: invalidMessage || "UUID invalide",
     },
     min: 1,
-    regex: /[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/,
+    regex: regex || /[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/,
     optional: optional
 
 })
